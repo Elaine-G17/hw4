@@ -1,22 +1,15 @@
 <h1>Places</h1>
 
-<div class="row">
-  <ul>
-  <% for post in @post %>
-    <div class="col-md-3 col-sm-6">
-      <h4>
-    <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
-      </h4>
-    <% if post.uploaded_image.attached? %>
-      <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
-    <% else %>
-      <img src="<%= post["image"] %>" class="img-fluid">
-    <% end %>
-      <p><%= post["body"] %></p>
-    </div>
-  <% end %>
+<div class="mb-3">
+  <button type="button" class="btn btn-outline-success">
+  <a href="/places/new">New Place</a>
+  </button>
 </div>
 
-<p>
-  <a href="/places/new">New place</a>
-</p>
+<div class="mb-3">
+  <ul>
+    <% for place in @places %>
+      <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
+    <% end %>
+  </ul>
+</div>
