@@ -8,11 +8,10 @@
 
 <div class="row">
 <% if @current_user %>
-  <% for post in @user_posts %>
+  <% for post in @posts %>
     <div class="col-md-4 col-sm-6">
       <h3><%= post["title"] %></h3>
       <h4><%= post["posted_on"] %></h4>
-
       <% if post.uploaded_image.attached? %>
         <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
       <% else %>
@@ -23,7 +22,7 @@
     </div>
   <% end %>
 <% else %>
- <p>You have no post yet.</p>
+ <p> <a href="/login">Login</a> to view your post. </p>
 <% end %>
 </div>
 
