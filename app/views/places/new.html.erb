@@ -7,9 +7,9 @@
       <%= form.text_field "name" %>
   </div>
   <div class="mb-3">
-    <%= form.submit "Add New Place", class: "btn btn-primary"%>
+    <button type="submit" class="btn btn-primary mb-3">Add New Place</button>
   </div>
     <% end %>
 <% else %>
-  You must <a href="/sessions/new">Login</a> to post.
+  You must <a href="/login">Login</a> to post.
 <% end %>

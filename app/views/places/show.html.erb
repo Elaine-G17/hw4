@@ -6,14 +6,29 @@
   </button>
 </div>
 
-<h2>My Posts</h2>
-<% for post in @posts %>
-  <h3><%= post["title"] %></h3>
-  <h4><%= post["posted_on"] %></h4>
-  <p><%= post["description"] %></p>
+<div class="row">
+<% if @current_user %>
+  <% for post in @user_posts %>
+    <div class="col-md-4 col-sm-6">
+      <h3><%= post["title"] %></h3>
+      <h4><%= post["posted_on"] %></h4>
+
+      <% if post.uploaded_image.attached? %>
+        <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+      <% else %>
+        <h1 class="display-6" class="text-center">No Optional Image</h1>
+      <% end %>
+
+      <p><%= post["description"] %></p>
+    </div>
+  <% end %>
+<% else %>
+ <p>You have no post yet.</p>
 <% end %>
+</div>
 
-
-<p>
-  <a href="/places">Back to All Places</a>
-</p>
+<div class="mb-3">
+  <button type="button" class="btn btn-outline-success">
+  <a href="/places">Back to Places</a>
+  </button>
+</div>
