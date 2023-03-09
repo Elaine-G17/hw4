@@ -11,9 +11,9 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find_by({ "id" => params["id"] })
     if @current_user
-    @user_posts = Post.where({ "place_id" => @place["id"], "user_id" => @current_user["id"]})
+      @user_posts = Post.where({ "place_id" => @place["id"], "user_id" => @current_user["id"]})
     else
-    @posts = Post.where({ "place_id" => @place["id"]})
+      @posts = Post.where({ "place_id" => @place["id"]})
     end
   end
 
